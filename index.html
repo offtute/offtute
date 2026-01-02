@@ -142,7 +142,7 @@
 </section>
 
 <footer>© 2026 | Online Tutors by IITians</footer>
-<a href="https://wa.me/916202061089" class="whatsapp">💬 Chat on WhatsApp</a>
+<a id="whatsappBtn" href="#" class="whatsapp" target="_blank">💬 Chat on WhatsApp</a>
 
 <script>
   function showForm(role) {
@@ -150,6 +150,14 @@
     document.getElementById('roleInput').value = role;
     document.getElementById('formTitle').innerText = role === 'Tutor' ? 'Apply as Tutor' : 'Find a Tutor for Your Child';
     document.getElementById('leadForm').scrollIntoView({ behavior: 'smooth' });
+
+    // Update WhatsApp prefilled message based on role
+    const number = '916202061089';
+    const msg = role === 'Tutor' 
+      ? 'Hello, I am interested in applying as a tutor.' 
+      : 'Hello, I am interested in finding a tutor for my child.';
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('whatsappBtn').href = url;
   }
 
   function submitForm(e) {
