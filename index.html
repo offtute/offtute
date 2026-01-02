@@ -24,9 +24,31 @@
       justify-content: center;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
     }
     header h1 { font-size: 42px; margin-bottom: 15px; }
     header p { max-width: 750px; margin: auto; font-size: 18px; line-height: 1.6; }
+
+    /* Scroll signifier as downward triangle */
+    .scroll-signifier {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 16px solid #fff;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
     section { padding: 60px 20px; max-width: 1100px; margin: auto; }
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
     .card { background: #fff; border-radius: 10px; padding: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
@@ -51,6 +73,7 @@
     <h1>Better Than Home Tuition</h1>
     <p>Trusted online tutors with monitored sessions, personalized matching, and IITian-led quality assurance.</p>
   </div>
+  <div class="scroll-signifier" onmouseover="scrollDown()"></div>
 </header>
 
 <section>
@@ -119,7 +142,7 @@
 </section>
 
 <footer>© 2026 | Online Tutors by IITians</footer>
-<a href="https://wa.me/919999999999" class="whatsapp">💬 Chat on WhatsApp</a>
+<a href="https://wa.me/916202061089" class="whatsapp">💬 Chat on WhatsApp</a>
 
 <script>
   function showForm(role) {
@@ -137,6 +160,10 @@
       body: formData
     }).then(() => alert('Thank you! We will contact you shortly.'));
     e.target.reset();
+  }
+
+  function scrollDown() {
+    window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' });
   }
 </script>
 
